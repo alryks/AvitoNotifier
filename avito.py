@@ -14,8 +14,9 @@ def wait(driver):
         waitDriver = WebDriverWait(driver, 10)
         waitDriver.until(EC.presence_of_element_located((By.CLASS_NAME, "styles-module-theme-CRreZ")))
     except:
-        driver.stop_client()
+        driver.close()
         driver.quit()
+        driver.stop_client()
 
 
 def parse():
@@ -44,7 +45,8 @@ def parse():
             if all([any([i in text for i in in_.split('\n')]) for in_ in include]) and not any([in_ in text for in_ in exclude.split('\n')]):
                 links.append(link)
 
-    driver.stop_client()
+    driver.close()
     driver.quit()
+    driver.stop_client()
 
     return links

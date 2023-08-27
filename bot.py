@@ -17,6 +17,7 @@ def start(message: Message):
     bot.send_message(message.chat.id, "I'm Avito Notifier Bot")
 
 
+notify(bot)
 schedule.every(10).minutes.do(notify, bot)
 
 
