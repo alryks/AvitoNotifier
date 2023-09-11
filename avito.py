@@ -1,5 +1,3 @@
-from time import sleep
-
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
@@ -30,7 +28,6 @@ def parse():
 
         driver.get(LINK + str(page))
         wait(driver)
-        sleep(2)
 
         linksContainer = driver.find_element(By.CSS_SELECTOR, '[data-marker="catalog-serp"]')
         if not linksContainer.text.strip():

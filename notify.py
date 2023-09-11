@@ -1,12 +1,14 @@
+import datetime
 from settings import ID
 from avito import parse
 from sqlite3 import connect
 
 
 def notify(bot):
-    # print('INTO NOTIFY!')
+    print(datetime.datetime.now())
+    print('INTO NOTIFY!')
     links = parse()
-    # print('PARSED!')
+    print('PARSED!')
 
     con = connect("avito.sqlite3")
     cur = con.cursor()
@@ -23,4 +25,6 @@ def notify(bot):
             if link not in links_exist:
                 cur.execute(f"INSERT INTO links VALUES ('{link}')")
                 bot.send_message(ID, link)
+                print('MESSAGE SENT!')
+    print('-' * 32)
     con.commit()
